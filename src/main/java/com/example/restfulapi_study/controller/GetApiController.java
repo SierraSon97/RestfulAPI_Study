@@ -1,6 +1,7 @@
 package com.example.restfulapi_study.controller;
 
 
+import com.example.restfulapi_study.dto.UserRequest;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,16 +22,10 @@ public class GetApiController {
         return pathName;
     }
     @GetMapping("query-param")
-    public String queryParam(
-            @RequestParam String name,
-            @RequestParam String email,
-            @RequestParam int age
-    ){
-        System.out.println(name);
-        System.out.println(email);
-        System.out.println(age);
-
-        return name+" "+email+" "+age;
+    public String queryParam(UserRequest userRequest) {
+        System.out.println(userRequest.getName());
+        System.out.println(userRequest.getEmail());
+        System.out.println(userRequest.getAge());
+        return userRequest.toString();
     }
-
 }
